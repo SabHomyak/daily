@@ -1,0 +1,1798 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://claninfo.ch/dailyexportschema.json",
+  "title": "Daily export",
+  "description": "Daily export of master data for display, description and simulation purposes; Dates are ISO-8601 'YYYY-MM-DD' formatted strings and their description is prefixed with 'Date of '",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "description": "The timestamp of the daily export",
+      "type": "string"
+    },
+    "businesscases": {
+      "description": "List of available simulative business transactions",
+      "type": "array",
+      "items": {
+        "description": "Business transaction",
+        "type": "string"
+      }
+    },
+    "calculator": {
+      "description": "Calculator object for simulative business transactions",
+      "type": "object",
+      "properties": {
+        "filename": {
+          "description": "Calculator filename",
+          "type": "string"
+        },
+        "content": {
+          "description": "Calculator",
+          "type": "string",
+          "contentEncoding": "base64",
+          "contentMediaType": "application/javascript"
+        }
+      }
+    },
+    "shareddata": {
+      "description": "Shared data object required for simulative calculations",
+      "type": "object",
+      "properties": {
+        "filename": {
+          "description": "Shared data filename",
+          "type": "string"
+        },
+        "content": {
+          "description": "Shared data",
+          "type": "string",
+          "contentEncoding": "base64",
+          "contentMediaType": "application/javascript"
+        }
+      }
+    },
+    "persons": {
+      "description": "List of persons",
+      "type": "array",
+      "items": {
+        "description": "Person",
+        "type": "object",
+        "properties": {
+          "personId": {
+            "description": "Internal identifier of a person",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "personalInformation": {
+            "description": "Personal information",
+            "type": "object",
+            "properties": {
+              "sex": {
+                "description": "Sex code",
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "MALE",
+                      "FEMALE"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "title": {
+                "description": "Title",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "firstName": {
+                "description": "First name",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "lastName": {
+                "description": "Last name",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "dateOfBirth": {
+                "description": "Date of birth",
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "ssn13": {
+                "description": "13-digit social security number",
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9]{3}\\.[0-9]{4}\\.[0-9]{4}\\.[0-9]{2}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "levelOfDisability": {
+                "description": "Percentagewise level of disability",
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "healthRestriction": {
+                "description": "Health restriction",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "exists": {
+                        "description": "True if health restrictions exists, false otherwise;",
+                        "anyOf": [
+                          {
+                            "type": "boolean"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "begin": {
+                        "description": "Date of restrictions beginning",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "end": {
+                        "description": "Date of restrictions ending",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "maritalStatus": {
+                "description": "Marital status",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "description": "Marital status code",
+                        "type": "string",
+                        "enum": [
+                          "SINGLE",
+                          "MARRIED",
+                          "DIVORCED",
+                          "WIDOWED",
+                          "DISSOLVED_PARTNERSHIP",
+                          "REGISTERED_PARTNERSHIP",
+                          "UNKNOWN"
+                        ]
+                      },
+                      "date": {
+                        "description": "Date of marital status",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "street": {
+                "description": "Street",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "additionalAddress": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "poBox": {
+                "description": "Postal office box",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "postalCode": {
+                "description": "Postal code",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "city": {
+                "description": "City",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "country": {
+                "description": "Country",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "language": {
+                "description": "Language code according to ISO-639-1: http://www.loc.gov/standards/iso639-2/php/code_list.php",
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-z]{2}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          },
+          "companyId": {
+            "description": "Company identifier",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "companyAdmittance": {
+            "description": "Date of company admittance",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "insurances": {
+            "description": "Insurances",
+            "type": "array",
+            "items": {
+              "description": "Insurance",
+              "type": "object",
+              "properties": {
+                "plan": {
+                  "description": "Pension care plan name",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "fundId": {
+                  "description": "Pension fund identifier",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "calculationDate": {
+                  "description": "Date of calculation",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "insuranceAdmittance": {
+                  "description": "Date of insurance admittance",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "levelOfEmployment": {
+                  "description": "Percentagewise level of employment",
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "savings": {
+                  "description": "Savings balance",
+                  "type": "object",
+                  "properties": {
+                    "regulatory": {
+                      "description": "Savings balance",
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "bvg": {
+                      "description": "Savings balance according to BVG",
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "salaries": {
+                  "description": "Salaries",
+                  "type": "object",
+                  "properties": {
+                    "insured": {
+                      "description": "Insured annual salary",
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "gross": {
+                      "description": "Gross annual salary",
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "bvg": {
+                      "description": "Insured annual salary according to BVG",
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "maxPurchase": {
+                  "description": "Maximum amount of voluntary purchase",
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "contributions": {
+                  "description": "Contributions",
+                  "type": "object",
+                  "properties": {
+                    "savings": {
+                      "description": "Annual contributions",
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "description": "Total annual contributions",
+                          "type": "object",
+                          "properties": {
+                            "amount": {
+                              "description": "Amount",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "percentage": {
+                              "description": "Percentage of insured salary",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "employer": {
+                          "description": "Employer share of annual contributions",
+                          "type": "object",
+                          "properties": {
+                            "amount": {
+                              "description": "Amount",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "percentage": {
+                              "description": "Percentage of insured salary",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "employee": {
+                          "description": "Employee share of annual contributions",
+                          "type": "object",
+                          "properties": {
+                            "amount": {
+                              "description": "Amount",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "percentage": {
+                              "description": "Percentage of insured salary",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "risks": {
+                      "description": "Annual risk premiums",
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "description": "Total annual risk premiums",
+                          "type": "object",
+                          "properties": {
+                            "amount": {
+                              "description": "Amount",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "percentage": {
+                              "description": "Percentage of insured salary",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "employer": {
+                          "description": "Employer share of annual risk premiums",
+                          "type": "object",
+                          "properties": {
+                            "amount": {
+                              "description": "Amount",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "percentage": {
+                              "description": "Percentage of insured salary",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "employee": {
+                          "description": "Employee share of annual risk premiums",
+                          "type": "object",
+                          "properties": {
+                            "amount": {
+                              "description": "Amount",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "percentage": {
+                              "description": "Percentage of insured salary",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "benefits": {
+                  "description": "Insurance benefits",
+                  "type": "object",
+                  "properties": {
+                    "retirement": {
+                      "description": "Retirement benefits",
+                      "type": "object",
+                      "properties": {
+                        "projections": {
+                          "description": "Projections",
+                          "type": "object",
+                          "properties": {
+                            "interest": {
+                              "description": "Interest rate for projection",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "57": {
+                              "description": "At age of 57",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "58": {
+                              "description": "At age of 58",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "59": {
+                              "description": "At age of 59",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "60": {
+                              "description": "At age of 60",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "61": {
+                              "description": "At age of 61",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "62": {
+                              "description": "At age of 62",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "63": {
+                              "description": "At age of 63",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "64": {
+                              "description": "At age of 64",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "65": {
+                              "description": "At age of 65",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "66": {
+                              "description": "At age of 66",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "67": {
+                              "description": "At age of 67",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "68": {
+                              "description": "At age of 68",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "69": {
+                              "description": "At age of 69",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "70": {
+                              "description": "At age of 70",
+                              "anyOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "capital": {
+                                      "description": "Retirement capital",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "pension": {
+                                      "description": "Pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    },
+                                    "conversionRate": {
+                                      "description": "Conversion rate of the retirement capital to the annual pension",
+                                      "anyOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "null"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "disability": {
+                      "description": "Benefits in case of disability",
+                      "type": "object",
+                      "properties": {
+                        "beneficiary": {
+                          "description": "Annual pension of disabled beneficiary",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "child": {
+                          "description": "Annual pension of each child",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "death": {
+                      "description": "Benefits in case of death",
+                      "type": "object",
+                      "properties": {
+                        "spouse": {
+                          "description": "Annual pension of spouse",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "orphan": {
+                          "description": "Annual pension of each orphan",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "completeOrphan": {
+                          "description": "Annual pension of each complete orphan",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "capital": {
+                          "description": "Sum payable at death",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "vestedBenefits": {
+                      "description": "Vested benefits (german: 'Freizügigkeitsleistungen')",
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "description": "Amount of vested benefits",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "amountBvg": {
+                          "description": "Amount of vested benefits according to BVG",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "amountAtAge50": {
+                          "description": "Amount of vested benefits at the insurant's age of 50",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "amountAtMarriage": {
+                          "description": "Amount of vested benefits at the insurant's date of marriage",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "amountClause15": {
+                          "description": "Amount of vested benefits according to FZG clause 15",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "amountClause17": {
+                          "description": "Amount of vested benefits according to FZG clause 17",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "purchases": {
+            "$comment": "TODO: To be discussed; NOT TO BE IMPLEMENTED YET",
+            "description": "Voluntary individual purchases",
+            "type": "object",
+            "properties": {
+              "listing": {
+                "description": "List of voluntary purchases; NULL = unknown",
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "description": "Voluntary purchase",
+                      "type": "object",
+                      "properties": {
+                        "amount": {
+                          "description": "Amount of voluntary purchase",
+                          "type": "number"
+                        },
+                        "date": {
+                          "description": "Date of voluntary purchase; NULL = unknown",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "interest": {
+                          "description": "Interest of voluntary purchase; NULL = unknown",
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reason": {
+                          "description": "Reason of purchase; NULL = unknown",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "COMPENSATION_OF_EARLY_RETIREMENT",
+                                "COMPENSATION_OF_FUNDING_GAPS",
+                                "REIMBURSEMENT_OF_HOME_OWNERSHIP",
+                                "FREIE_STIFTUNGSMITTEL",
+                                "SONDERMASSNAHMEN",
+                                "MITTEL_AUS_SCHEIDUNG",
+                                "OTHER"
+                              ]
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "amount",
+                        "date",
+                        "interest",
+                        "reason"
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "maximum",
+              "listing"
+            ]
+          },
+          "withdrawals": {
+            "$comment": "TODO: To be discussed; NOT TO BE IMPLEMENTED YET",
+            "description": "Withdrawals for home ownership or realized pledgings (for home ownership) or for divorces",
+            "type": "object",
+            "properties": {
+              "listing": {
+                "description": "List of withdrawals",
+                "type": "array",
+                "items": {
+                  "description": "Withdrawal",
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "description": "Amount of withdrawal",
+                      "type": "number"
+                    },
+                    "amountBvg": {
+                      "description": "Amount of withdrawal according to BVG",
+                      "type": "number"
+                    },
+                    "date": {
+                      "description": "Date of withdrawal",
+                      "type": "number"
+                    },
+                    "reason": {
+                      "description": "Reason of withdrawal; Encouragement of home ownership, realized pledging, divorce",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "reimbursements": {
+                "description": "List of reimbursements; For informational purposes only because a reimbursement is basically already listed under 'purchases'",
+                "type": "array",
+                "items": {
+                  "description": "Reimbursement",
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "description": "Amount of reimbursement",
+                      "type": "number"
+                    },
+                    "amountBvg": {
+                      "description": "Amount of reimbursement according to BVG",
+                      "type": "number"
+                    },
+                    "date": {
+                      "description": "Date of reimbursement",
+                      "type": "number"
+                    },
+                    "reason": {
+                      "description": "Reason of reimbursement; Encouragement of home ownership, realized pledging, divorce",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "pledgings": {
+            "$comment": "TODO: To be discussed; NOT TO BE IMPLEMENTED YET",
+            "description": "Pledgings as collateral",
+            "type": "object",
+            "properties": {
+              "listing": {
+                "description": "List of pledgings",
+                "type": "array",
+                "items": {
+                  "description": "Pledging",
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "description": "Amount of pledging",
+                      "type": "number"
+                    },
+                    "date": {
+                      "description": "Date of pledging",
+                      "type": "number"
+                    },
+                    "pledgee": {
+                      "description": "Details of pledgee",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "realized": {
+                "description": "List of realized pledgings; For informational purposes only because a realized pledging is basically already listed under 'withdrawals'",
+                "type": "array",
+                "items": {
+                  "description": "Reimbursement",
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "description": "Amount of reimbursement",
+                      "type": "number"
+                    },
+                    "date": {
+                      "description": "Date of reimbursement",
+                      "type": "number"
+                    },
+                    "pledgee": {
+                      "description": "Details of pledgee",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "pensions": {
+            "$comment": "TODO: To be discussed; NOT TO BE IMPLEMENTED YET"
+          },
+          "insurantdata": {
+            "description": "Insurant specific data object required for simulative calculations",
+            "type": "object",
+            "properties": {
+              "filename": {
+                "description": "Insurant specific data filename",
+                "type": "string"
+              },
+              "content": {
+                "description": "Insurant specific data",
+                "type": "string",
+                "contentEncoding": "base64",
+                "contentMediaType": "application/javascript"
+              }
+            }
+          }
+        }
+      }
+    },
+    "pensionFunds": {
+      "description": "List of pension funds",
+      "type": "array",
+      "items": {
+        "description": "Pension fund",
+        "type": "object",
+        "properties": {
+          "fundId": {
+            "description": "Internal identifier of pension fund",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "name": {
+            "description": "Pension fund name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "companies": {
+      "description": "List of companies",
+      "type": "array",
+      "items": {
+        "description": "Company",
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "description": "Internal identifier of company",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "uid": {
+            "description": "Company UID",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Z]{3}-[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "name": {
+            "description": "Company name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "pensionFunds": {
+            "description": "List of pension fund identifiers",
+            "type": "array",
+            "items": {
+              "fundId": {
+                "description": "Pension fund identifier",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
