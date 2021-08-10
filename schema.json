@@ -143,17 +143,6 @@
                   }
                 ]
               },
-              "levelOfDisability": {
-                "description": "Percentagewise level of disability",
-                "anyOf": [
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
               "healthRestriction": {
                 "description": "Health restriction",
                 "anyOf": [
@@ -240,70 +229,215 @@
                   }
                 ]
               },
-              "street": {
-                "description": "Street",
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
+              "addresses": {
+                "description": "List of addresses",
+                "type": "array",
+                "items": {
+                  "description": "adress object; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "description": "Address type, corresponds to [HAUPTADRESSE, BRIEFADRESSE, KORRESPONDENZADRESSE, RECHNUNGSADRESSE, ZWEITADRESSE] in german",
+                      "anyOf": [
+                        {
+                          "enum": [
+                            "MAIN",
+                            "POSTAL",
+                            "CORRESPONDENCE",
+                            "BILLING",
+                            "ADDITIONAL"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "street": {
+                      "description": "Street",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "additionalAddress": {
+                      "description": "Additional address",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "poBox": {
+                      "description": "PO box",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "postalCode": {
+                      "description": "Postal code",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "city": {
+                      "description": "City",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "country": {
+                      "description": "Country",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "phone": {
+                      "description": "Phone",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "email": {
+                      "description": "Email",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "mobile": {
+                      "description": "Mobile",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "website": {
+                      "description": "Website",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "additionalInformation1": {
+                      "description": "Additional information 1",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "additionalInformation2": {
+                      "description": "Additional information 2",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "contactPerson": {
+                      "description": "Detail of contact person",
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "description": "Title",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "firstName": {
+                          "description": "First name",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "lastName": {
+                          "description": "Last name",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "language": {
+                          "description": "Language code according to ISO-639-1: http://www.loc.gov/standards/iso639-2/php/code_list.php",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[a-z]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    }
                   }
-                ]
-              },
-              "additionalAddress": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "poBox": {
-                "description": "Postal office box",
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "postalCode": {
-                "description": "Postal code",
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "city": {
-                "description": "City",
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "country": {
-                "description": "Country",
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
+                }
               },
               "language": {
                 "description": "Language code according to ISO-639-1: http://www.loc.gov/standards/iso639-2/php/code_list.php",
@@ -316,31 +450,230 @@
                     "type": "null"
                   }
                 ]
+              },
+              "partner": {
+                "description": "partner",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "sex": {
+                        "description": "Sex code",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "MALE",
+                              "FEMALE"
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "title": {
+                        "description": "Title",
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "firstName": {
+                        "description": "First name",
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "lastName": {
+                        "description": "Last name",
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "dateOfBirth": {
+                        "description": "Date of birth",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "ssn13": {
+                        "description": "13-digit social security number",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{3}\\.[0-9]{4}\\.[0-9]{4}\\.[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "marriageDate": {
+                        "description": "Date of marital status",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "divorceDate": {
+                        "description": "Date of divorce",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "language": {
+                        "description": "Language code according to ISO-639-1: http://www.loc.gov/standards/iso639-2/php/code_list.php",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[a-z]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "children": {
+                "anyOf": [
+                  {
+                    "description": "List of childs",
+                    "type": "array",
+                    "items": {
+                      "description": "child object; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                      "type": "object",
+                      "properties": {
+                        "sex": {
+                          "description": "Sex code",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "MALE",
+                                "FEMALE"
+                              ]
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "title": {
+                          "description": "Title",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "firstName": {
+                          "description": "First name",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "lastName": {
+                          "description": "Last name",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "dateOfBirth": {
+                          "description": "Date of birth",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "ssn13": {
+                          "description": "13-digit social security number",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9]{3}\\.[0-9]{4}\\.[0-9]{4}\\.[0-9]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "language": {
+                          "description": "Language code according to ISO-639-1: http://www.loc.gov/standards/iso639-2/php/code_list.php",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[a-z]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               }
             }
-          },
-          "companyId": {
-            "description": "Company identifier",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "companyAdmittance": {
-            "description": "Date of company admittance",
-            "anyOf": [
-              {
-                "type": "string",
-                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-              },
-              {
-                "type": "null"
-              }
-            ]
           },
           "insurances": {
             "description": "Insurances",
@@ -360,7 +693,7 @@
                     }
                   ]
                 },
-                "fundId": {
+                "pensionFundId": {
                   "description": "Pension fund identifier",
                   "anyOf": [
                     {
@@ -371,8 +704,31 @@
                     }
                   ]
                 },
-                "calculationDate": {
-                  "description": "Date of calculation",
+                "companyId": {
+                  "description": "Company identifier",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "employmentAdmittance": {
+                  "description": "Date of employment admittance",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "employmentTermination": {
+                  "description": "Date of employment admittance",
                   "anyOf": [
                     {
                       "type": "string",
@@ -395,11 +751,35 @@
                     }
                   ]
                 },
-                "levelOfEmployment": {
-                  "description": "Percentagewise level of employment",
+                "insuranceTermination": {
+                  "description": "Date of insurance termination",
                   "anyOf": [
                     {
-                      "type": "number"
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "terminationReason": {
+                  "description": "Insurance termination reason",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "calculationDate": {
+                  "description": "Date of calculation",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
                     },
                     {
                       "type": "null"
@@ -436,42 +816,161 @@
                 },
                 "salaries": {
                   "description": "Salaries",
-                  "type": "object",
-                  "properties": {
-                    "insured": {
-                      "description": "Insured annual salary",
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "gross": {
-                      "description": "Gross annual salary",
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "bvg": {
-                      "description": "Insured annual salary according to BVG",
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
+                  "type": "array",
+                  "items": {
+                    "description": "adress object; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                    "type": "object",
+                    "properties": {
+                      "validity": {
+                        "description": "Date of validity",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "type": {
+                        "description": "Type of salary",
+                        "anyOf": [
+                          {
+                            "enum": [
+                              "FULL",
+                              "OTHER",
+                              "INSURED",
+                              "DEDUCTION"
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "amount": {
+                        "description": "Amount",
+                        "anyOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "levelOfDisability": {
+                        "description": "Percentagewise level of disability",
+                        "anyOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "levelOfEmployment": {
+                        "description": "Percentagewise level of employment",
+                        "anyOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "levelOfPremiumWaiver": {
+                        "description": "Percentagewise level of premium waiver",
+                        "anyOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "status": {
+                        "description": "status of salary",
+                        "anyOf": [
+                          {
+                            "enum": [
+                              "DEFINITE"
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
                     }
                   }
+                },
+                "unpaidHolidays": {
+                  "anyOf": [
+                    {
+                      "description": "Unpaid holidays",
+                      "type": "array",
+                      "items": {
+                        "description": "Unpaid holiday; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                        "type": "object",
+                        "properties": {
+                          "start": {
+                            "description": "start date",
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "end": {
+                            "description": "end date",
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "remark": {
+                            "description": "remark",
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "levelOfContribution": {
+                            "description": "Percentageqise level of contribution",
+                            "anyOf": [
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
                 },
                 "maxPurchase": {
                   "description": "Maximum amount of voluntary purchase",
@@ -485,190 +984,341 @@
                   ]
                 },
                 "contributions": {
-                  "description": "Contributions",
-                  "type": "object",
-                  "properties": {
-                    "savings": {
-                      "description": "Annual contributions",
-                      "type": "object",
-                      "properties": {
-                        "total": {
-                          "description": "Total annual contributions",
-                          "type": "object",
-                          "properties": {
-                            "amount": {
-                              "description": "Amount",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "percentage": {
-                              "description": "Percentage of insured salary",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
+                  "anyOf": [
+                    {
+                      "description": "List of contributions",
+                      "type": "array",
+                      "items": {
+                        "description": "Contribution, incl. invoice data; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                        "type": "object",
+                        "properties": {
+                          "invoiceId": {
+                            "description": "Invoice identifier",
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "period": {
+                            "description": "period",
+                            "type": "object",
+                            "properties": {
+                              "start": {
+                                "description": "start date",
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "end": {
+                                "description": "end date",
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              }
                             }
-                          }
-                        },
-                        "employer": {
-                          "description": "Employer share of annual contributions",
-                          "type": "object",
-                          "properties": {
-                            "amount": {
-                              "description": "Amount",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
+                          },
+                          "amounts": {
+                            "description": "Contribution amounts",
+                            "type": "object",
+                            "properties": {
+                              "basis": {
+                                "description": "Basis amount",
+                                "type": "object",
+                                "properties": {
+                                  "employer": {
+                                    "description": "amount of employer",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "total": {
+                                    "description": "amount of total",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "employee": {
+                                    "description": "amount of employee",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
                                 }
-                              ]
-                            },
-                            "percentage": {
-                              "description": "Percentage of insured salary",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
+                              },
+                              "correction": {
+                                "description": "amount of corrections",
+                                "type": "object",
+                                "properties": {
+                                  "employer": {
+                                    "description": "amount of employer",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "total": {
+                                    "description": "amount of total",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "employee": {
+                                    "description": "amount of employee",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "manuel": {
+                                    "description": "amount of manuel",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
                                 }
-                              ]
+                              },
+                              "total": {
+                                "description": "amount of corrections",
+                                "type": "object",
+                                "properties": {
+                                  "employer": {
+                                    "description": "amount of employer",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "total": {
+                                    "description": "amount of total",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  },
+                                  "employee": {
+                                    "description": "amount of employee",
+                                    "anyOf": [
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
                             }
-                          }
-                        },
-                        "employee": {
-                          "description": "Employee share of annual contributions",
-                          "type": "object",
-                          "properties": {
-                            "amount": {
-                              "description": "Amount",
-                              "anyOf": [
-                                {
-                                  "type": "number"
+                          },
+                          "details": {
+                            "description": "Detailed contribution positions",
+                            "type": "array",
+                            "items": {
+                              "description": "Detailed contribution position; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "description": "Internal PVClan code",
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
                                 },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "percentage": {
-                              "description": "Percentage of insured salary",
-                              "anyOf": [
-                                {
-                                  "type": "number"
+                                "name": {
+                                  "description": "Name of the position",
+                                  "anyOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
                                 },
-                                {
-                                  "type": "null"
+                                "amountEmployer": {
+                                  "description": "Amount of employer",
+                                  "anyOf": [
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "amountEmployee": {
+                                  "description": "Amount of employee",
+                                  "anyOf": [
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "correctionEmployer": {
+                                  "description": "Corrective amount of employer",
+                                  "anyOf": [
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "correctionEmployee": {
+                                  "description": "Corrective amount of employee",
+                                  "anyOf": [
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
                                 }
-                              ]
+                              }
+                            }
+                          },
+                          "invoice": {
+                            "description": "Invoice",
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "description": "type",
+                                "anyOf": [
+                                  {
+                                    "enum": [
+                                      "EINZAHLUNGSSCHEIN",
+                                      "LASTSCHRIFTVERFAHREN",
+                                      "AKONTO_ZAHLUNG",
+                                      "EINZAHLUNGSSCHEIN_OHNE_BETRAG",
+                                      "GRUENER_EINZAHLUNGSSCHEIN"
+                                    ]
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "remark": {
+                                "description": "Remark",
+                                "anyOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "invoiceDate": {
+                                "description": "Date",
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "maturityDate": {
+                                "description": "maturityDate",
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              },
+                              "maturityDays": {
+                                "description": "Days of maturity",
+                                "anyOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "type": "null"
+                                  }
+                                ]
+                              }
                             }
                           }
                         }
                       }
                     },
-                    "risks": {
-                      "description": "Annual risk premiums",
-                      "type": "object",
-                      "properties": {
-                        "total": {
-                          "description": "Total annual risk premiums",
-                          "type": "object",
-                          "properties": {
-                            "amount": {
-                              "description": "Amount",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "percentage": {
-                              "description": "Percentage of insured salary",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            }
-                          }
-                        },
-                        "employer": {
-                          "description": "Employer share of annual risk premiums",
-                          "type": "object",
-                          "properties": {
-                            "amount": {
-                              "description": "Amount",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "percentage": {
-                              "description": "Percentage of insured salary",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            }
-                          }
-                        },
-                        "employee": {
-                          "description": "Employee share of annual risk premiums",
-                          "type": "object",
-                          "properties": {
-                            "amount": {
-                              "description": "Amount",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "percentage": {
-                              "description": "Percentage of insured salary",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            }
-                          }
-                        }
-                      }
+                    {
+                      "type": "null"
                     }
-                  }
+                  ]
                 },
                 "benefits": {
                   "description": "Insurance benefits",
@@ -680,662 +1330,66 @@
                       "properties": {
                         "projections": {
                           "description": "Projections",
-                          "type": "object",
-                          "properties": {
-                            "interest": {
-                              "description": "Interest rate for projection",
-                              "anyOf": [
-                                {
-                                  "type": "number"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "57": {
-                              "description": "At age of 57",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
+                          "type": "array",
+                          "items": {
+                            "description": "Company object; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                            "type": "object",
+                            "properties": {
+                              "atAge": {
+                                "description": "At age",
+                                "anyOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "type": "null"
                                   }
-                                }
-                              ]
-                            },
-                            "58": {
-                              "description": "At age of 58",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
+                                ]
+                              },
+                              "interest": {
+                                "description": "interest",
+                                "anyOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "type": "null"
                                   }
-                                }
-                              ]
-                            },
-                            "59": {
-                              "description": "At age of 59",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
+                                ]
+                              },
+                              "capital": {
+                                "description": "Retirement capital",
+                                "anyOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "type": "null"
                                   }
-                                }
-                              ]
-                            },
-                            "60": {
-                              "description": "At age of 60",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
+                                ]
+                              },
+                              "pension": {
+                                "description": "Pension",
+                                "anyOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "type": "null"
                                   }
-                                }
-                              ]
-                            },
-                            "61": {
-                              "description": "At age of 61",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
+                                ]
+                              },
+                              "conversionRate": {
+                                "description": "Conversion rate of the retirement capital to the annual pension",
+                                "anyOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "type": "null"
                                   }
-                                }
-                              ]
-                            },
-                            "62": {
-                              "description": "At age of 62",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            "63": {
-                              "description": "At age of 63",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            "64": {
-                              "description": "At age of 64",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            "65": {
-                              "description": "At age of 65",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            "66": {
-                              "description": "At age of 66",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            "67": {
-                              "description": "At age of 67",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            "68": {
-                              "description": "At age of 68",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            "69": {
-                              "description": "At age of 69",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            "70": {
-                              "description": "At age of 70",
-                              "anyOf": [
-                                {
-                                  "type": "null"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "capital": {
-                                      "description": "Retirement capital",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "pension": {
-                                      "description": "Pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    },
-                                    "conversionRate": {
-                                      "description": "Conversion rate of the retirement capital to the annual pension",
-                                      "anyOf": [
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "null"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
+                                ]
+                              }
                             }
                           }
                         }
@@ -1492,230 +1546,37 @@
                       }
                     }
                   }
-                }
-              }
-            }
-          },
-          "purchases": {
-            "$comment": "TODO: To be discussed; NOT TO BE IMPLEMENTED YET",
-            "description": "Voluntary individual purchases",
-            "type": "object",
-            "properties": {
-              "listing": {
-                "description": "List of voluntary purchases; NULL = unknown",
-                "anyOf": [
-                  {
-                    "type": "null"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "description": "Voluntary purchase",
-                      "type": "object",
-                      "properties": {
-                        "amount": {
-                          "description": "Amount of voluntary purchase",
-                          "type": "number"
-                        },
-                        "date": {
-                          "description": "Date of voluntary purchase; NULL = unknown",
-                          "anyOf": [
-                            {
-                              "type": "string"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "interest": {
-                          "description": "Interest of voluntary purchase; NULL = unknown",
-                          "anyOf": [
-                            {
-                              "type": "number"
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        },
-                        "reason": {
-                          "description": "Reason of purchase; NULL = unknown",
-                          "anyOf": [
-                            {
-                              "type": "string",
-                              "enum": [
-                                "COMPENSATION_OF_EARLY_RETIREMENT",
-                                "COMPENSATION_OF_FUNDING_GAPS",
-                                "REIMBURSEMENT_OF_HOME_OWNERSHIP",
-                                "FREIE_STIFTUNGSMITTEL",
-                                "SONDERMASSNAHMEN",
-                                "MITTEL_AUS_SCHEIDUNG",
-                                "OTHER"
-                              ]
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        }
-                      },
-                      "required": [
-                        "amount",
-                        "date",
-                        "interest",
-                        "reason"
-                      ]
-                    }
-                  }
-                ]
-              }
-            },
-            "required": [
-              "maximum",
-              "listing"
-            ]
-          },
-          "withdrawals": {
-            "$comment": "TODO: To be discussed; NOT TO BE IMPLEMENTED YET",
-            "description": "Withdrawals for home ownership or realized pledgings (for home ownership) or for divorces",
-            "type": "object",
-            "properties": {
-              "listing": {
-                "description": "List of withdrawals",
-                "type": "array",
-                "items": {
-                  "description": "Withdrawal",
+                },
+                "insurantdata": {
+                  "description": "Insurant specific data object required for simulative calculations",
                   "type": "object",
                   "properties": {
-                    "amount": {
-                      "description": "Amount of withdrawal",
-                      "type": "number"
-                    },
-                    "amountBvg": {
-                      "description": "Amount of withdrawal according to BVG",
-                      "type": "number"
-                    },
-                    "date": {
-                      "description": "Date of withdrawal",
-                      "type": "number"
-                    },
-                    "reason": {
-                      "description": "Reason of withdrawal; Encouragement of home ownership, realized pledging, divorce",
+                    "filename": {
+                      "description": "Insurant specific data filename",
                       "type": "string"
+                    },
+                    "content": {
+                      "description": "Insurant specific data",
+                      "type": "string",
+                      "contentEncoding": "base64",
+                      "contentMediaType": "application/javascript"
                     }
                   }
                 }
-              },
-              "reimbursements": {
-                "description": "List of reimbursements; For informational purposes only because a reimbursement is basically already listed under 'purchases'",
-                "type": "array",
-                "items": {
-                  "description": "Reimbursement",
-                  "type": "object",
-                  "properties": {
-                    "amount": {
-                      "description": "Amount of reimbursement",
-                      "type": "number"
-                    },
-                    "amountBvg": {
-                      "description": "Amount of reimbursement according to BVG",
-                      "type": "number"
-                    },
-                    "date": {
-                      "description": "Date of reimbursement",
-                      "type": "number"
-                    },
-                    "reason": {
-                      "description": "Reason of reimbursement; Encouragement of home ownership, realized pledging, divorce",
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "pledgings": {
-            "$comment": "TODO: To be discussed; NOT TO BE IMPLEMENTED YET",
-            "description": "Pledgings as collateral",
-            "type": "object",
-            "properties": {
-              "listing": {
-                "description": "List of pledgings",
-                "type": "array",
-                "items": {
-                  "description": "Pledging",
-                  "type": "object",
-                  "properties": {
-                    "amount": {
-                      "description": "Amount of pledging",
-                      "type": "number"
-                    },
-                    "date": {
-                      "description": "Date of pledging",
-                      "type": "number"
-                    },
-                    "pledgee": {
-                      "description": "Details of pledgee",
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "realized": {
-                "description": "List of realized pledgings; For informational purposes only because a realized pledging is basically already listed under 'withdrawals'",
-                "type": "array",
-                "items": {
-                  "description": "Reimbursement",
-                  "type": "object",
-                  "properties": {
-                    "amount": {
-                      "description": "Amount of reimbursement",
-                      "type": "number"
-                    },
-                    "date": {
-                      "description": "Date of reimbursement",
-                      "type": "number"
-                    },
-                    "pledgee": {
-                      "description": "Details of pledgee",
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "pensions": {
-            "$comment": "TODO: To be discussed; NOT TO BE IMPLEMENTED YET"
-          },
-          "insurantdata": {
-            "description": "Insurant specific data object required for simulative calculations",
-            "type": "object",
-            "properties": {
-              "filename": {
-                "description": "Insurant specific data filename",
-                "type": "string"
-              },
-              "content": {
-                "description": "Insurant specific data",
-                "type": "string",
-                "contentEncoding": "base64",
-                "contentMediaType": "application/javascript"
               }
             }
           }
         }
       }
     },
-    "pensionFunds": {
-      "description": "List of pension funds",
+    "foundations": {
+      "description": "List of foundations (german: 'Vorsorgestiftung')",
       "type": "array",
       "items": {
-        "description": "Pension fund",
+        "description": "Foundation",
         "type": "object",
         "properties": {
-          "fundId": {
+          "foundationId": {
             "description": "Internal identifier of pension fund",
             "anyOf": [
               {
@@ -1736,6 +1597,874 @@
                 "type": "null"
               }
             ]
+          },
+          "addresses": {
+            "description": "List of addresses",
+            "type": "array",
+            "items": {
+              "description": "adress object; Dates are in ISO-8601 'YYYY-MM-DD' format",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Address type, corresponds to [HAUPTADRESSE, BRIEFADRESSE, KORRESPONDENZADRESSE, RECHNUNGSADRESSE, ZWEITADRESSE] in german",
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "MAIN",
+                        "POSTAL",
+                        "CORRESPONDENCE",
+                        "BILLING",
+                        "ADDITIONAL"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "street": {
+                  "description": "Street",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "additionalAddress": {
+                  "description": "Additional address",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "poBox": {
+                  "description": "PO box",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "postalCode": {
+                  "description": "Postal code",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "city": {
+                  "description": "City",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "country": {
+                  "description": "Country",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "phone": {
+                  "description": "Phone",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "email": {
+                  "description": "Email",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "mobile": {
+                  "description": "Mobile",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "website": {
+                  "description": "Website",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "additionalInformation1": {
+                  "description": "Additional information 1",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "additionalInformation2": {
+                  "description": "Additional information 2",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "contactPerson": {
+                  "description": "Detail of contact person",
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "description": "Title",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "firstName": {
+                      "description": "First name",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "lastName": {
+                      "description": "Last name",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "language": {
+                      "description": "Language code according to ISO-639-1: http://www.loc.gov/standards/iso639-2/php/code_list.php",
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-z]{2}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "pensionFunds": {
+            "description": "List of affiliated pension fund identifiers",
+            "type": "array",
+            "items": {
+              "description": "Affiliated pension fund identifier",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "pensionFunds": {
+      "description": "List of pension funds (german: 'Vorsorgewerk')",
+      "type": "array",
+      "items": {
+        "description": "Pension fund",
+        "type": "object",
+        "properties": {
+          "pensionFundId": {
+            "description": "Internal identifier of pension fund",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "name": {
+            "description": "Pension fund name",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "addresses": {
+            "description": "List of addresses",
+            "type": "array",
+            "items": {
+              "description": "adress object; Dates are in ISO-8601 'YYYY-MM-DD' format",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Address type, corresponds to [HAUPTADRESSE, BRIEFADRESSE, KORRESPONDENZADRESSE, RECHNUNGSADRESSE, ZWEITADRESSE] in german",
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "MAIN",
+                        "POSTAL",
+                        "CORRESPONDENCE",
+                        "BILLING",
+                        "ADDITIONAL"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "street": {
+                  "description": "Street",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "additionalAddress": {
+                  "description": "Additional address",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "poBox": {
+                  "description": "PO box",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "postalCode": {
+                  "description": "Postal code",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "city": {
+                  "description": "City",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "country": {
+                  "description": "Country",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "phone": {
+                  "description": "Phone",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "email": {
+                  "description": "Email",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "mobile": {
+                  "description": "Mobile",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "website": {
+                  "description": "Website",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "additionalInformation1": {
+                  "description": "Additional information 1",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "additionalInformation2": {
+                  "description": "Additional information 2",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "contactPerson": {
+                  "description": "Detail of contact person",
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "description": "Title",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "firstName": {
+                      "description": "First name",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "lastName": {
+                      "description": "Last name",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "language": {
+                      "description": "Language code according to ISO-639-1: http://www.loc.gov/standards/iso639-2/php/code_list.php",
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-z]{2}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "companies": {
+            "description": "List of affiliated company identifiers",
+            "type": "array",
+            "items": {
+              "description": "Affiliated company identifier",
+              "type": "object",
+              "properties": {
+                "companyId": {
+                  "description": "Company identifier",
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "fundAdmittance": {
+                  "description": "pensionFundAdmittance ",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "fundTermination": {
+                  "description": "pensionFundTermination",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "planFeatures": {
+            "description": "List of plan features",
+            "type": "array",
+            "items": {
+              "description": "Plan features; Dates are in ISO-8601 'YYYY-MM-DD' format",
+              "type": "object",
+              "properties": {
+                "companyId": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "companyPlanFeatures": {
+                  "description": "List of plan features per company",
+                  "type": "array",
+                  "items": {
+                    "description": "Plan features",
+                    "type": "object",
+                    "properties": {
+                      "validity": {
+                        "description": "Validity date",
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "features": {
+                        "description": "Features",
+                        "type": "array",
+                        "items": {
+                          "description": " features description ",
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "description": "Name",
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "type": {
+                              "description": "Type",
+                              "anyOf": [
+                                {
+                                  "enum": [
+                                    "DATUM",
+                                    "RENTE",
+                                    "PROZENT"
+                                  ]
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "format": {
+                              "description": "Format pattern of type",
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "value": {
+                              "description": "value",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "contributions": {
+            "description": "List of contributions",
+            "type": "array",
+            "items": {
+              "description": "Contributions per company",
+              "type": "object",
+              "properties": {
+                "companyId": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "companyContributions": {
+                  "description": "Company identifier",
+                  "type": "array",
+                  "items": {
+                    "invoiceId": {
+                      "description": "Invoice identifier",
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "invoice": {
+                      "description": "invoice object",
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "description": "type",
+                          "anyOf": [
+                            {
+                              "enum": [
+                                "EINZAHLUNGSSCHEIN",
+                                "LASTSCHRIFTVERFAHREN",
+                                "AKONTO_ZAHLUNG",
+                                "EINZAHLUNGSSCHEIN_OHNE_BETRAG",
+                                "GRUENER_EINZAHLUNGSSCHEIN"
+                              ]
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "remark": {
+                          "description": "remark",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "invoiceDate": {
+                          "description": "invoiceDate",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "maturityDate": {
+                          "description": "maturityDate",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "maturityDays": {
+                          "description": "days of maturity",
+                          "type": "number"
+                        }
+                      }
+                    },
+                    "period": {
+                      "description": "period",
+                      "type": "object",
+                      "properties": {
+                        "start": {
+                          "description": "start date",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "end": {
+                          "description": "end date",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "amounts": {
+                      "description": "contribution amounts",
+                      "type": "object",
+                      "properties": {
+                        "base": {
+                          "description": "basis amount ",
+                          "type": "object",
+                          "properties": {
+                            "employer": {
+                              "description": "amount of employer",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "total": {
+                              "description": "amount of total",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "employee": {
+                              "description": "amount of employee",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "correction": {
+                          "description": "amount of corrections",
+                          "type": "object",
+                          "properties": {
+                            "employer": {
+                              "description": "amount of employer",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "total": {
+                              "description": "amount of total",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "employee": {
+                              "description": "amount of employee",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "manuel": {
+                              "description": "amount of manuel",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "total": {
+                          "description": "amount of corrections",
+                          "type": "object",
+                          "properties": {
+                            "employer": {
+                              "description": "amount of employer",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "total": {
+                              "description": "amount of total",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "employee": {
+                              "description": "amount of employee",
+                              "anyOf": [
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1744,11 +2473,11 @@
       "description": "List of companies",
       "type": "array",
       "items": {
-        "description": "Company",
+        "description": "Company object",
         "type": "object",
         "properties": {
           "companyId": {
-            "description": "Internal identifier of company",
+            "description": "Company identifier",
             "anyOf": [
               {
                 "type": "string"
@@ -1759,35 +2488,273 @@
             ]
           },
           "uid": {
-            "description": "Company UID",
-            "anyOf": [
-              {
-                "type": "string",
-                "pattern": "^[A-Z]{3}-[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}$"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "description": "UID identifier",
+            "type": "string"
           },
-          "name": {
-            "description": "Company name",
-            "anyOf": [
-              {
+          "companyInformation": {
+            "description": "Company information",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Company name",
                 "type": "string"
               },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "pensionFunds": {
-            "description": "List of pension fund identifiers",
-            "type": "array",
-            "items": {
-              "fundId": {
-                "description": "Pension fund identifier",
-                "type": "string"
+              "active": {
+                "description": "active ",
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "securityLevel": {
+                "description": "Security level",
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "addresses": {
+                "description": "List of addresses",
+                "type": "array",
+                "items": {
+                  "description": "adress object; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "description": "Address type, corresponds to [HAUPTADRESSE, BRIEFADRESSE, KORRESPONDENZADRESSE, RECHNUNGSADRESSE, ZWEITADRESSE] in german",
+                      "anyOf": [
+                        {
+                          "enum": [
+                            "MAIN",
+                            "POSTAL",
+                            "CORRESPONDENCE",
+                            "BILLING",
+                            "ADDITIONAL"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "street": {
+                      "description": "Street",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "additionalAddress": {
+                      "description": "Additional address",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "poBox": {
+                      "description": "PO box",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "postalCode": {
+                      "description": "Postal code",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "city": {
+                      "description": "City",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "country": {
+                      "description": "Country",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "phone": {
+                      "description": "Phone",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "email": {
+                      "description": "Email",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "mobile": {
+                      "description": "Mobile",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "website": {
+                      "description": "Website",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "additionalInformation1": {
+                      "description": "Additional information 1",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "additionalInformation2": {
+                      "description": "Additional information 2",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "contactPerson": {
+                      "description": "Detail of contact person",
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "description": "Title",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "firstName": {
+                          "description": "First name",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "lastName": {
+                          "description": "Last name",
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "language": {
+                          "description": "Language code according to ISO-639-1: http://www.loc.gov/standards/iso639-2/php/code_list.php",
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "pattern": "^[a-z]{2}$"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "remarks": {
+                "description": "List of company remarks",
+                "type": "array",
+                "items": {
+                  "description": "Company object; Dates are in ISO-8601 'YYYY-MM-DD' format",
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "description": "Code",
+                      "type": "number"
+                    },
+                    "remark": {
+                      "description": "remark",
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                }
               }
             }
           }
